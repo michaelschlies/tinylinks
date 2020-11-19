@@ -5,6 +5,9 @@ name: Build and Test
 
 on:
   push:
+    paths-ignore:
+      - 'README.md'
+      - '.github/FUNDING.yml'
     branches: [ main ]
   pull_request:
     branches: [ main ]
