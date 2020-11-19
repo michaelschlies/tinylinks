@@ -48,7 +48,7 @@ jobs:
           name: tar
 
       - shell: bash
-        - run: |
+        run: |
             ls -lah
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
