@@ -1,3 +1,5 @@
+import java.util.regex.Pattern
+
 buildscript {
     ext {
         ratpackVersion = '1.8.0'
@@ -14,7 +16,10 @@ apply plugin: 'io.ratpack.ratpack-groovy'
 apply plugin: 'idea'
 
 group 'com.michaelschlies.oss'
-version '1.0-SNAPSHOT'
+Pattern refix = Pattern.compile('refs\\/a-z*\\/')
+Map ENV = System.getenv()
+
+version refix.matcher(ENV.GITHUB_REF?:"${refix}DEVEL-SNAPSHOT-${new Date().getTime()}").replaceAll('')
 
 repositories {
     mavenCentral()
